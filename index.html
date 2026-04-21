@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teacher Reflection - Sir Angelo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Slate 900 for Dark Mode */
+            color: #f8fafc; /* Slate 50 */
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Custom scrollbar for a cleaner dark mode look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a; 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #334155; 
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #475569; 
+        }
+    </style>
+</head>
+<body class="min-h-screen p-4 md:p-8 lg:p-12 selection:bg-blue-500/30">
+
+    <!-- Background Music Audio Element -->
+    <audio id="bg-music" loop>
+        <source src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Gymnop%C3%A9die_No._1_%28Satie%29.ogg" type="audio/ogg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Floating Music Toggle Button -->
+    <button id="music-toggle" onclick="toggleMusic()" class="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 bg-slate-800 border border-slate-700 hover:bg-slate-700 text-slate-200 rounded-full shadow-2xl transition-all duration-300 group">
+        <svg id="music-icon-play" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="block group-hover:text-blue-400 transition-colors"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg>
+        <svg id="music-icon-pause" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="hidden group-hover:text-blue-400 transition-colors"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+        <span id="music-text" class="text-sm font-medium">Play Music</span>
+    </button>
+
+    <div class="max-w-7xl mx-auto">
+        
+        <!-- Header & Controls -->
+        <header class="mb-14 text-center">
+            <div class="inline-flex items-center justify-center p-3 mb-6 bg-blue-900/30 text-blue-400 rounded-full border border-blue-800/50 shadow-lg shadow-blue-900/20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/></svg>
+            </div>
+            
+            <!-- Language Toggle -->
+            <div class="inline-flex bg-slate-800 p-1.5 rounded-full shadow-inner border border-slate-700 relative" role="group">
+                <button onclick="setLanguage('original')" id="btn-original" class="px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 shadow-sm bg-slate-600 text-white">
+                    Original (Mixed)
+                </button>
+                <button onclick="setLanguage('english')" id="btn-english" class="px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 text-slate-400 hover:text-slate-200">
+                    English
+                </button>
+                <button onclick="setLanguage('filipino')" id="btn-filipino" class="px-6 py-2.5 text-sm font-medium rounded-full transition-all duration-300 text-slate-400 hover:text-slate-200">
+                    Filipino
+                </button>
+            </div>
+        </header>
+
+        <!-- Three Frameworks Grid (Forced 3 Columns on md+ screens) -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+            
+            <!-- Framework 1: See-Experience -->
+            <article class="bg-slate-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-slate-700 hover:border-slate-600 transition-all flex flex-col h-full group">
+                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-700/50">
+                    <div class="w-14 h-14 bg-amber-900/30 rounded-2xl flex items-center justify-center text-amber-400 shrink-0 border border-amber-800/50 group-hover:scale-105 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-100" id="title-see">See-Experience</h2>
+                        <h3 class="text-xs font-bold text-amber-400 uppercase tracking-widest mt-1" id="subtitle-see">Masid-Danas</h3>
+                    </div>
+                </div>
+                <div class="prose prose-invert prose-slate text-slate-300 leading-relaxed text-[15.5px] flex-grow space-y-5" id="content-see">
+                    <!-- Content injected via JS -->
+                </div>
+            </article>
+
+            <!-- Framework 2: Analysis-Reflection -->
+            <article class="bg-slate-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-slate-700 hover:border-slate-600 transition-all flex flex-col h-full group">
+                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-700/50">
+                    <div class="w-14 h-14 bg-blue-900/30 rounded-2xl flex items-center justify-center text-blue-400 shrink-0 border border-blue-800/50 group-hover:scale-105 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-100" id="title-analysis">Analysis-Reflection</h2>
+                        <h3 class="text-xs font-bold text-blue-400 uppercase tracking-widest mt-1" id="subtitle-analysis">Suri-Nilay</h3>
+                    </div>
+                </div>
+                <div class="prose prose-invert prose-slate text-slate-300 leading-relaxed text-[15.5px] flex-grow space-y-5" id="content-analysis">
+                    <!-- Content injected via JS -->
+                </div>
+            </article>
+
+            <!-- Framework 3: Commitment-Action -->
+            <article class="bg-slate-800/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-slate-700 hover:border-slate-600 transition-all flex flex-col h-full group">
+                <div class="flex items-center gap-4 mb-6 pb-6 border-b border-slate-700/50">
+                    <div class="w-14 h-14 bg-emerald-900/30 rounded-2xl flex items-center justify-center text-emerald-400 shrink-0 border border-emerald-800/50 group-hover:scale-105 transition-transform">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 14 4-4"/><path d="M3.34 19a10 10 0 1 1 17.32 0"/></svg>
+                    </div>
+                    <div>
+                        <h2 class="text-xl font-bold text-slate-100" id="title-action">Commitment-Action</h2>
+                        <h3 class="text-xs font-bold text-emerald-400 uppercase tracking-widest mt-1" id="subtitle-action">Taya-Kilos</h3>
+                    </div>
+                </div>
+                <div class="prose prose-invert prose-slate text-slate-300 leading-relaxed text-[15.5px] flex-grow space-y-5" id="content-action">
+                    <!-- Content injected via JS -->
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+    <!-- Application Logic -->
+    <script>
+        // Music Player Logic
+        let isPlaying = false;
+        const bgMusic = document.getElementById('bg-music');
+        const iconPlay = document.getElementById('music-icon-play');
+        const iconPause = document.getElementById('music-icon-pause');
+        const musicText = document.getElementById('music-text');
+
+        // Itakda ang volume para maging maayos sa background
+        bgMusic.volume = 0.4;
+
+        function toggleMusic() {
+            if (isPlaying) {
+                bgMusic.pause();
+                iconPlay.classList.remove('hidden');
+                iconPause.classList.add('hidden');
+                musicText.innerText = "Play Music";
+            } else {
+                bgMusic.play().catch(error => {
+                    console.log("Audio playback failed:", error);
+                });
+                iconPlay.classList.add('hidden');
+                iconPause.classList.remove('hidden');
+                musicText.innerText = "Pause Music";
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // Content Data Dictionary
+        const contentData = {
+            original: {
+                titles: {
+                    see: ["See-Experience", "Masid-Danas"],
+                    analysis: ["Analysis-Reflection", "Suri-Nilay"],
+                    action: ["Commitment-Action", "Taya-Kilos"]
+                },
+                see: [
+                    "Sa aking unang taon bilang isang guro, marami akong natuklasan hindi lamang tungkol sa propesyon kundi higit lalo sa aking sarili at sa aking bokasyon. Bago ako pumasok sa mundong ito, araw-araw kong ipinagdarasal: <em class='text-amber-200'>\"Lord, dalhin Mo ako sa lugar kung saan ako kailangan, at kung saan mararamdaman kong pinahahalagahan ako.\"</em> At the end of this academic year, looking back at the faces of my students and the school community I became a part of, napatunayan kong dininig talaga ang panalanging ito. I discovered that my deep desire to be valued wasn't born out of pride, but out of a pure need to know that my presence makes a meaningful difference in the lives of my learners.",
+                    "Bilang isang first-year teacher, I also discovered my own immense resilience in the face of exhaustion and self-doubt. May mga araw na nakakapagod at nakakakaba, lalo na kapag pakiramdam ko ay marami pa akong hindi alam o hindi kayang ibigay. Subalit, sa tuwing nakikita ko ang mga ngiti at \"Aha!\" moments ng mga bata, I realized that my heart is truly built for this calling. Nakita ko na kaya ko palang maging isang guro na hindi lang nagtuturo ng leksyon sa libro, kundi isang taong nakikinig, umuunawa, at nagiging ligtas na kanlungan para sa mga mag-aaral."
+                ],
+                analysis: [
+                    "Ngayong nagninilay ako sa aking mga naging karanasan, batid ko na marami pa akong puwedeng pagbutihin sa aking pagtuturo. Gusto kong mas paghusayin pa ang aking classroom management at ang pagbuo ng mga differentiated activities para mas matugunan ang iba't ibang learning styles ng mga bata. Bilang bagong guro, madalas kong ibigay ang lahat ng aking oras at lakas hanggang sa makalimutan ko na ang aking sarili, kaya I also deeply want to improve my work-life balance. Kailangan kong matutunan na ang pagiging mahusay na guro ay nagsisimula rin sa pag-aalaga sa aking sariling kalusugan—dahil hindi ako makakapagbigay mula sa basyong baso.",
+                    "Sa kabilang banda, buong puso kong ipagpapatuloy ang pagbuo ng makabuluhang ugnayan sa aking mga estudyante, na siyang pinaka-puso ng aking teaching philosophy. I will continue to cultivate a classroom environment where vulnerability is welcomed and mistakes are seen as beautiful opportunities to grow. Ipagpapatuloy ko ang pagiging gurong laging nandiyan para sa kanila, deeply anchored in the answered prayer that brought me here. If my students feel that they are needed and valued in my classroom, just as I feel needed and valued by them, then I know I am successfully living out the very grace I once prayed for."
+                ],
+                action: [
+                    "Para sa susunod na academic year, I am committing to concrete action plans that will make me a more effective, holistic, and empathetic educator. Sisikapin kong makilahok sa mas maraming professional development seminars at makipag-collaborate sa mga mas may karanasang guro upang mapalawak pa ang aking pedagogical skills. I also plan to incorporate more reflective practices into my daily routine—like keeping a teaching journal—so I can intentionally track my professional growth, acknowledge my missteps with grace, and celebrate the small, quiet victories inside the classroom.",
+                    "Higit sa lahat, taya ko ang aking buong puso at dedikasyon sa misyong ito. Whenever the days get rough and the workload feels overwhelming, I will commit to pausing and looking back at how my journey started: with an earnest prayer to be placed exactly where I am right now. Paninindigan ko ang aking papel bilang \"Sir Angelo,\" na hindi lang nagpapasa ng kaalaman, kundi nagpapanday ng pag-asa. I commit to greeting each new day with the conviction that I am exactly where God intends me to be, actively serving the students who need me just as much as I need them."
+                ]
+            },
+            english: {
+                titles: {
+                    see: ["Experience", "See"],
+                    analysis: ["Reflection", "Analysis"],
+                    action: ["Action", "Commitment"]
+                },
+                see: [
+                    "In my first year as a teacher, I discovered a lot not only about the profession but more importantly about myself and my vocation. Before entering this world, I prayed every day: <em class='text-amber-200'>\"Lord, bring me to a place where I am needed, and where I will feel valued.\"</em> At the end of this academic year, looking back at the faces of my students and the school community I became a part of, I proved that this prayer was truly answered. I discovered that my deep desire to be valued wasn't born out of pride, but out of a pure need to know that my presence makes a meaningful difference in the lives of my learners.",
+                    "As a first-year teacher, I also discovered my own immense resilience in the face of exhaustion and self-doubt. There were tiring and nerve-wracking days, especially when I felt like there was so much I didn't know or couldn't provide. However, every time I saw the smiles and \"Aha!\" moments of the children, I realized that my heart is truly built for this calling. I saw that I could be a teacher who doesn't just teach lessons from a book, but someone who listens, understands, and becomes a safe haven for the students."
+                ],
+                analysis: [
+                    "Now that I am reflecting on my experiences, I know that there is still much I can improve in my teaching. I want to further enhance my classroom management and the creation of differentiated activities to better address the diverse learning styles of the children. As a new teacher, I often gave all my time and energy until I forgot about myself, so I also deeply want to improve my work-life balance. I need to learn that being a great teacher also begins with taking care of my own health—because I cannot pour from an empty cup.",
+                    "On the other hand, I will wholeheartedly continue building meaningful connections with my students, which is the very heart of my teaching philosophy. I will continue to cultivate a classroom environment where vulnerability is welcomed and mistakes are seen as beautiful opportunities to grow. I will continue to be the teacher who is always there for them, deeply anchored in the answered prayer that brought me here. If my students feel that they are needed and valued in my classroom, just as I feel needed and valued by them, then I know I am successfully living out the very grace I once prayed for."
+                ],
+                action: [
+                    "For the next academic year, I am committing to concrete action plans that will make me a more effective, holistic, and empathetic educator. I will strive to participate in more professional development seminars and collaborate with more experienced teachers to further expand my pedagogical skills. I also plan to incorporate more reflective practices into my daily routine—like keeping a teaching journal—so I can intentionally track my professional growth, acknowledge my missteps with grace, and celebrate the small, quiet victories inside the classroom.",
+                    "Above all, I pledge my entire heart and dedication to this mission. Whenever the days get rough and the workload feels overwhelming, I will commit to pausing and looking back at how my journey started: with an earnest prayer to be placed exactly where I am right now. I will stand by my role as \"Sir Angelo,\" who not only passes on knowledge but also forges hope. I commit to greeting each new day with the conviction that I am exactly where God intends me to be, actively serving the students who need me just as much as I need them."
+                ]
+            },
+            filipino: {
+                titles: {
+                    see: ["Karanasan", "Masid"],
+                    analysis: ["Pagninilay", "Suri"],
+                    action: ["Kilos", "Taya"]
+                },
+                see: [
+                    "Sa aking unang taon bilang isang guro, marami akong natuklasan hindi lamang tungkol sa propesyon kundi higit lalo sa aking sarili at sa aking bokasyon. Bago ako pumasok sa mundong ito, araw-araw kong ipinagdarasal: <em class='text-amber-200'>\"Panginoon, dalhin Mo ako sa lugar kung saan ako kailangan, at kung saan mararamdaman kong pinahahalagahan ako.\"</em> Sa pagtatapos ng taong panuruan na ito, sa paglingon sa mga mukha ng aking mga estudyante at sa komunidad ng paaralan na aking kinabilangan, napatunayan kong dininig talaga ang panalanging ito. Natuklasan ko na ang aking matinding pagnanais na mapahalagahan ay hindi nagmula sa pagmamalaki, kundi sa isang dalisay na pangangailangang malaman na ang aking presensya ay may makabuluhang ambag sa buhay ng aking mga mag-aaral.",
+                    "Bilang isang bagong guro, natuklasan ko rin ang aking matinding katatagan sa harap ng pagod at pagdududa sa sarili. May mga araw na nakakapagod at nakakakaba, lalo na kapag pakiramdam ko ay marami pa akong hindi alam o hindi kayang ibigay. Subalit, sa tuwing nakikita ko ang mga ngiti at \"Aha!\" moments ng mga bata, napagtanto ko na ang aking puso ay sadyang hinubog para sa bokasyong ito. Nakita ko na kaya ko palang maging isang guro na hindi lang nagtuturo ng leksyon sa libro, kundi isang taong nakikinig, umuunawa, at nagiging ligtas na kanlungan para sa mga mag-aaral."
+                ],
+                analysis: [
+                    "Ngayong nagninilay ako sa aking mga naging karanasan, batid ko na marami pa akong puwedeng pagbutihin sa aking pagtuturo. Gusto kong mas paghusayin pa ang aking pamamahala sa silid-aralan at ang pagbuo ng mga inangkop na gawain para mas matugunan ang iba't ibang paraan ng pagkatuto ng mga bata. Bilang bagong guro, madalas kong ibigay ang lahat ng aking oras at lakas hanggang sa makalimutan ko na ang aking sarili, kaya lubos ko ring nais na mapabuti ang balanse ng aking trabaho at personal na buhay. Kailangan kong matutunan na ang pagiging mahusay na guro ay nagsisimula rin sa pag-aalaga sa aking sariling kalusugan—dahil hindi ako makapagbibigay mula sa basyong baso.",
+                    "Sa kabilang banda, buong puso kong ipagpapatuloy ang pagbuo ng makabuluhang ugnayan sa aking mga estudyante, na siyang pinaka-puso ng aking pilosopiya sa pagtuturo. Ipagpapatuloy ko ang paglinang sa isang kapaligiran sa silid-aralan kung saan tinatanggap ang kahinaan at ang mga pagkakamali ay itinuturing na magagandang pagkakataon upang lumago. Ipagpapatuloy ko ang pagiging gurong laging nandiyan para sa kanila, malalim na nakapangkla sa sinagot na panalangin na nagdala sa akin dito. Kung nararamdaman ng aking mga mag-aaral na sila ay kailangan at pinahahalagahan sa aking silid-aralan, tulad ng pakiramdam kong kailangan at pinahahalagahan ako nila, alam kong matagumpay kong isinasabuhay ang biyayang minsan kong ipinagdasal."
+                ],
+                action: [
+                    "Para sa susunod na taong panuruan, itinatalaga ko ang aking sarili sa mga kongkretong plano ng pagkilos na maghuhubog sa akin bilang isang mas epektibo, buo, at maunawaing guro. Sisikapin kong makilahok sa mas maraming seminar para sa propesyonal na pag-unlad at makipagtulungan sa mga mas may karanasang guro upang mapalawak pa ang aking mga kasanayan sa pagtuturo. Plano ko ring isama ang mas maraming gawaing pagninilay sa aking pang-araw-araw na gawain—tulad ng pagsusulat sa isang dyornal ng pagtuturo—upang sinasadya kong masubaybayan ang aking propesyonal na paglago, tanggapin ang aking mga pagkakamali nang may biyaya, at ipagdiwang ang maliliit at tahimik na tagumpay sa loob ng silid-aralan.",
+                    "Higit sa lahat, taya ko ang aking buong puso at dedikasyon sa misyong ito. Sa tuwing magiging mahirap ang mga araw at pakiramdam ko ay nakakasakal na ang dami ng trabaho, mangangako akong hihinto at babalikan kung paano nagsimula ang aking paglalakbay: sa isang taimtim na panalangin na mailagay kung saan man ako naroroon ngayon. Paninindigan ko ang aking papel bilang \"Sir Angelo,\" na hindi lang nagpapasa ng kaalaman, kundi nagpapanday ng pag-asa. Mangangako akong sasalubungin ang bawat bagong araw nang may paninindigan na ako ay nasa mismong lugar kung saan nais ng Diyos na ako ay mapunta, aktibong naglilingkod sa mga mag-aaral na nangangailangan sa akin gaya ng pangangailangan ko sa kanila."
+                ]
+            }
+        };
+
+        function applyAnimation(elementId) {
+            const el = document.getElementById(elementId);
+            el.classList.remove('fade-in');
+            void el.offsetWidth; // I-trigger ang reflow para mag-restart ang animation
+            el.classList.add('fade-in');
+        }
+
+        function updateContent(section, langData) {
+            const container = document.getElementById(`content-${section}`);
+            
+            // Generate paragraphs
+            container.innerHTML = langData[section].map(paragraph => `<p>${paragraph}</p>`).join('');
+            
+            // Update titles
+            document.getElementById(`title-${section}`).innerText = langData.titles[section][0];
+            document.getElementById(`subtitle-${section}`).innerText = langData.titles[section][1];
+            
+            applyAnimation(`content-${section}`);
+            applyAnimation(`title-${section}`);
+            applyAnimation(`subtitle-${section}`);
+        }
+
+        function setLanguage(lang) {
+            const btnIds = ['btn-original', 'btn-english', 'btn-filipino'];
+            
+            // Update button styles para sa Dark Mode
+            btnIds.forEach(id => {
+                const btn = document.getElementById(id);
+                if (id === `btn-${lang}`) {
+                    btn.classList.add('bg-slate-600', 'text-white', 'shadow-sm');
+                    btn.classList.remove('text-slate-400', 'hover:text-slate-200', 'bg-transparent');
+                } else {
+                    btn.classList.remove('bg-slate-600', 'text-white', 'shadow-sm');
+                    btn.classList.add('text-slate-400', 'hover:text-slate-200', 'bg-transparent');
+                }
+            });
+
+            // Load data
+            const data = contentData[lang];
+            updateContent('see', data);
+            updateContent('analysis', data);
+            updateContent('action', data);
+        }
+
+        // Initialize content on load
+        window.onload = () => {
+            setLanguage('original');
+        };
+    </script>
+</body>
+</html>
